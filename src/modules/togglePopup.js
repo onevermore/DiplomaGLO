@@ -11,7 +11,7 @@ const togglePopup = (blockName, btnClassName, popupToOpen) => {
         target = target.closest(btnClassName);
 
         if (target) {
-
+            event.preventDefault();
             popup.style.opacity = 0;
             popup.style.display = 'block';
 
@@ -29,7 +29,6 @@ const togglePopup = (blockName, btnClassName, popupToOpen) => {
 
     block.forEach(elem => elem.addEventListener('click', event => {
 
-        event.preventDefault();
         showPopup(event);
     }));
 
