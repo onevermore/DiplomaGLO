@@ -1,13 +1,12 @@
 
-
 import accordionOneTwo from './modules/accordionOneTwo';
 import nextStepCalc from './modules/nextStepCalc';
 import addBlocks from './modules/addBlocks';
 import calc from './modules/calc';
 import togglePopup from './modules/togglePopup';
-import sendForm from './modules/sendForm';
 import formValid from './modules/formValid';
 import sendMainForms from './modules/sendMainForms';
+import calculatorDataSend from './modules/calculatorDataSend';
 
 
 //аккордеон для блока FAQ и для калькулятора заодно, делегированием
@@ -16,13 +15,20 @@ accordionOneTwo();
 nextStepCalc();
 //кнопка "Больше"
 addBlocks();
-//пока не готов калькулятор
+//калькулятор
 calc();
 // все всплывающие окна, их открытие/закрытие
+//указываем: в каком блоке искать кнопку, класс кнопки, какое popup окно открыть при нажатии кнопки
 togglePopup('.sentence', '.discount-btn', '.popup-discount');
 togglePopup('.director', '.director-btn', '.popup-consultation');
 togglePopup('.gauging', '.gauging-button', '.popup-check');
 togglePopup('header', '.call-btn', '.popup-call'); //тут две кнопки с классом .call-btn
-sendForm();
+togglePopup('.constructor', '.last', '.popup-discount'); //кнопка в калькуляторе
+
+//отправка формы с вопросом при нажатии на кнопку "Получить консультацию"
+
 formValid();
+// отправка двух форм сверху
 sendMainForms();
+//отправка данных калькулятора
+calculatorDataSend();

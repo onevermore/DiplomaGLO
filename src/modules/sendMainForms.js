@@ -1,6 +1,7 @@
 const sendMainForms = () => {
 
-    const mainForms = document.querySelectorAll('.main-form, .section-form .capture-form');
+    const mainForms = document.querySelectorAll('.main-form, .section-form .capture-form, .popup-consultation .capture-form');
+
 
     const loadMessage = 'Идёт отправка...',
         successMessage = 'Отправлено',
@@ -19,6 +20,14 @@ const sendMainForms = () => {
             const formData = new FormData(form);
 
             const body = {};
+
+            //если форма для консультации, то в объект добавляем ещё вопрос
+            if (form.classList.contains('consult-form')) {
+                const question = document.querySelector('input[name=user_quest]');
+                body.question = question.value;
+            }
+
+
             formData.forEach((val, key) => {
                 body[key] = val;
             });

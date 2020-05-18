@@ -16,49 +16,42 @@ const calc = () => {
 
     const countSum = () => {
         let total = 0,
-            d2 = 1,
-            q2 = 1,
-            one = 10000,
+            d2 = 0,
+            r2 = 0,
+            price = 10000,
             dnishe = 0;
         const diametrValue = +diametr.options[diametr.selectedIndex].value,
-            ringsValue = +ringQuantity.options[ringQuantity.selectedIndex].value,
-            switch1 = +switchFirst.value;
-
+            ringsValue = +ringQuantity.options[ringQuantity.selectedIndex].value;
 
         if (switchFirst.checked) {
+            //если однокамерный
             hideBlock.forEach(item => {
                 item.style.display = 'none';
-                d2 = 1;
-                q2 = 1;
+
             });
             if (switchSecond.checked) {
                 dnishe = 1000;
             }
+
+
         } else {
+            //если 2 камеры, то показываем блок с инпутами
             hideBlock.forEach(item => {
                 item.style.display = 'inline-block';
             });
 
-            one = 15000;
-            d2 =  +diametrTwo.options[diametrTwo.selectedIndex].value;
-            q2 = +ringQuantityTwo.options[ringQuantityTwo.selectedIndex].value;
+            price = 15000;
+            d2 = +diametrTwo.options[diametrTwo.selectedIndex].value;
+            r2 = +ringQuantityTwo.options[ringQuantityTwo.selectedIndex].value;
             if (switchSecond.checked) {
                 dnishe = 2000;
             }
         }
 
 
+        total = price + (price * diametrValue) + (price * ringsValue) + (price * d2) + (price * r2) + dnishe;
 
-        if (diametrValue && ringsValue) {
-
-            total = ((one) * (diametrValue) * (ringsValue) * d2 * q2 + dnishe) ;
-        }
-
-
-
-        totalValue.value = +total;
-
-
+        totalValue.value = total;
 
 
     };
@@ -67,11 +60,14 @@ const calc = () => {
 
     accordionCalc.addEventListener('change', event => {
         const target = event.target;
-
+        //если данные меняются, то пересчитывать
         if (target.matches('select') || target.matches('input')) {
             countSum();
         }
+
+
     });
+
 
 
 };

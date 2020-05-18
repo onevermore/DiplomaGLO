@@ -35,6 +35,7 @@ const togglePopup = (blockName, btnClassName, popupToOpen) => {
     //закрытие окна popup если кликнул на крестик или мимо
     popup.addEventListener('click', event => {
         let target = event.target;
+
         if (target.classList.contains('popup-close')) {
             popup.style.display = 'none';
 
