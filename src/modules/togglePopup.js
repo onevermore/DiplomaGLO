@@ -10,7 +10,13 @@ const togglePopup = (blockName, btnClassName, popupToOpen) => {
 
         target = target.closest(btnClassName);
 
+        //проверяю есть ли класс calc  на кнопке с классом last(кнопка в калькуляторе для открытия попап)
         if (target) {
+            if (btnClassName === '.last' && !target.classList.contains('calc')) {
+                target.classList.add('calc');
+
+            }
+
             event.preventDefault();
             popup.style.opacity = 0;
             popup.style.display = 'block';
@@ -33,21 +39,36 @@ const togglePopup = (blockName, btnClassName, popupToOpen) => {
     }));
 
     //закрытие окна popup если кликнул на крестик или мимо
-    popup.addEventListener('click', event => {
-        let target = event.target;
 
+    const closePopup = (event) => {
+        let target = event.target;
+        const btnCalc = document.querySelector('.last');
+        console.log('btnCalc: ', btnCalc);
         if (target.classList.contains('popup-close')) {
             popup.style.display = 'none';
+            //при закрытии попапа удаляем класс calc если он есть
+            if (btnClassName === '.last' && btnCalc.classList.contains('calc')) {
+                btnCalc.classList.remove('calc');
+
+            }
 
         } else {
             target = target.closest('.popup-content');
 
             if (!target) {
                 popup.style.display = 'none';
+                //при закрытии попапа удаляем класс calc если он есть
+                if (btnClassName === '.last' && btnCalc.classList.contains('calc')) {
+                    btnCalc.classList.remove('calc');
+
+                }
             }
         }
 
-    });
+    };
+
+    popup.addEventListener('click', closePopup);
+
 
 
 

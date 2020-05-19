@@ -6,7 +6,7 @@ import calc from './modules/calc';
 import togglePopup from './modules/togglePopup';
 import formValid from './modules/formValid';
 import sendMainForms from './modules/sendMainForms';
-import calculatorDataSend from './modules/calculatorDataSend';
+
 
 
 //аккордеон для блока FAQ и для калькулятора заодно, делегированием
@@ -28,7 +28,7 @@ togglePopup('.constructor', '.last', '.popup-discount'); //кнопка в ка�
 
 
 formValid();
-// отправка двух форм сверху и формы "Получить консультацию"
+// отправка всех форм / если надо отправка данных калькулятора
 sendMainForms();
-//отправка данных калькулятора
-calculatorDataSend();
+
+
