@@ -10,10 +10,16 @@ const togglePopup = (blockName, btnClassName, popupToOpen) => {
 
         target = target.closest(btnClassName);
 
+
         //проверяю есть ли класс calc  на кнопке с классом last(кнопка в калькуляторе для открытия попап)
         if (target) {
             if (btnClassName === '.last' && !target.classList.contains('calc')) {
                 target.classList.add('calc');
+                const mytext= document.querySelector('.sendtext');
+                if (mytext) {
+                    mytext.textContent='';
+                    console.log('llll');
+                }
 
             }
 
@@ -43,7 +49,7 @@ const togglePopup = (blockName, btnClassName, popupToOpen) => {
     const closePopup = (event) => {
         let target = event.target;
         const btnCalc = document.querySelector('.last');
-        console.log('btnCalc: ', btnCalc);
+
         if (target.classList.contains('popup-close')) {
             popup.style.display = 'none';
             //при закрытии попапа удаляем класс calc если он есть
