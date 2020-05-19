@@ -11,6 +11,7 @@ const sendMainForms = () => {
     const statusMessage = document.createElement('div');
     statusMessage.style.cssText = `font-size: 2rem; color:black;`;
 
+
     const btnCalculator = document.querySelector('.last');
     mainForms.forEach(form => {
         form.addEventListener('submit', event => {
@@ -29,7 +30,7 @@ const sendMainForms = () => {
             }
 
 
-
+            //если для калькулятора то добавить нужно данные оттуда
             if (btnCalculator.classList.contains('calc')) {
                 const accordCalc = document.getElementById('accordion'),
                     switch1 = document.getElementById('myonoffswitch'),
@@ -79,6 +80,9 @@ const sendMainForms = () => {
                     if (elem.tagName.toLowerCase() === 'input')
                         elem.value = '';
                 });
+                setTimeout(() => {
+                    statusMessage.textContent = '';
+                }, 5000);
 
             };
 
