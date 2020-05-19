@@ -15,11 +15,7 @@ const togglePopup = (blockName, btnClassName, popupToOpen) => {
         if (target) {
             if (btnClassName === '.last' && !target.classList.contains('calc')) {
                 target.classList.add('calc');
-                const mytext= document.querySelector('.sendtext');
-                if (mytext) {
-                    mytext.textContent='';
-                    console.log('llll');
-                }
+
 
             }
 
